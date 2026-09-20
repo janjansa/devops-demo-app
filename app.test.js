@@ -7,5 +7,6 @@ describe("GET /info", () => {
 
         expect(response.statusCode).toBe(200)
         expect(response.body.application).toBe('DevOps Docker Demo')
+        expect(response.body.platform).toBe('win32')
     })
 })
