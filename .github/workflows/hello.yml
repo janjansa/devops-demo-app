@@ -44,8 +44,11 @@ jobs:
       - name: Test ACR access
         run: az acr repository list --name jankkodevopsacr
 
-      - name: Build Docker image
-        run: docker build -t devops-docker-demo:ci .
+      - name: ACR login
+        run: az acr login --name jankkodevopsacr
 
-      - name: List files
-        run: ls -la
+      - name: Build Docker image
+        run: docker build -t jankkodevopsacr.azurecr.io/devops-docker-demo:latest .
+
+      - name: Push Docker image
+        run: docker push jankkodevopsacr.azurecr.io/devops-docker-demo:latest
