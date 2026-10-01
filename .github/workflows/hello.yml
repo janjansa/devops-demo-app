@@ -41,6 +41,9 @@ jobs:
       - name: Test Azure connection
         run: az account show
 
+      - name: Test ACR access
+        run: az acr repository list --name jankkodevopsacr
+
       - name: Build Docker image
         run: docker build -t devops-docker-demo:ci .
 
