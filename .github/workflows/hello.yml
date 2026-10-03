@@ -54,4 +54,4 @@ jobs:
         run: docker push jankkodevopsacr.azurecr.io/devops-docker-demo:latest
       
       - name: Deploy to Azure Container
-        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image jankkkodevopsacr.azurecr.io/devops-docker-demo:latest
+        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image jankkodevopsacr.azurecr.io/devops-docker-demo:latest
