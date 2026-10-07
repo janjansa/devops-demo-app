@@ -1,5 +1,7 @@
 name: Hello Github Actions
 
+
+
 on:
   push:
     branches:
@@ -11,6 +13,8 @@ on:
 permissions:
   id-token: write
   contents: read
+
+IMAGE="jankkodevopsacr.azurecr.io/devops-docker-demo:${{ github.sha }}"
 
 jobs:
   hello:
@@ -48,10 +52,10 @@ jobs:
         run: az acr login --name jankkodevopsacr
 
       - name: Build Docker image
-        run: docker build -t jankkodevopsacr.azurecr.io/devops-docker-demo:latest .
+        run: docker build -t $IMAGE .
 
       - name: Push Docker image
-        run: docker push jankkodevopsacr.azurecr.io/devops-docker-demo:latest
+        run: docker push $IMAGE
       
       - name: Deploy to Azure Container
-        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image jankkodevopsacr.azurecr.io/devops-docker-demo:latest
+        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image $IMAGE
