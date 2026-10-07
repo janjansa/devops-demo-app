@@ -14,7 +14,8 @@ permissions:
   id-token: write
   contents: read
 
-IMAGE="jankkodevopsacr.azurecr.io/devops-docker-demo:${{ github.sha }}"
+env: 
+  IMAGE: jankkodevopsacr.azurecr.io/devops-docker-demo:${{ github.sha }}
 
 jobs:
   hello:
@@ -52,10 +53,10 @@ jobs:
         run: az acr login --name jankkodevopsacr
 
       - name: Build Docker image
-        run: docker build -t $IMAGE .
+        run: docker build -t "$IMAGE" .
 
       - name: Push Docker image
-        run: docker push $IMAGE
+        run: docker push "$IMAGE"
       
       - name: Deploy to Azure Container
-        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image $IMAGE
+        run: az containerapp update --name devops-demo-app --resource-group devops-demo-rg --image "$IMAGE"
