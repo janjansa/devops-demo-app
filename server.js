@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.send('Hello from GitHub Environments! 🚀');
+    res.send('Hello from GitHub Environments attempt 2! 🚀');
 });
 
 app.get('/info', (req, res) => {
