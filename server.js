@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-    res.send('Hello from my Node.js application with working CI/CD');
+    res.send('Hello from GitHub Environments! 🚀');
 });
 
 app.get('/info', (req, res) => {
